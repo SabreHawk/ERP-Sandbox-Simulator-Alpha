@@ -4,107 +4,64 @@
 # author : Zhiquan.Wang
 
 
-import hashlib
+class Message(object):
+    def __init__(self, _msg):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list) and isinstance(_msg[2],
+                                                                                                             str):
+            self.__header = _msg[0]
+            self.__content = " ".join([str(_msg[i]) for i in _msg[1]])
+            self.__md5 = _msg[2]
+        elif isinstance(_msg, str):
+            tmp_msg = _msg.split(":")
+            self.__header = tmp_msg[0]
+            self.__content = tmp_msg[1].split(" ")
+            self.__md5 = tmp_msg[2]
+        else:
+            print("Error : Class Message Error > __init__")
+
+    def get_header(self):
+        return self.__header
+
+    def get_content(self):
+        return self.__content
+
+    def get_md5(self):
+        return self.__md5
+
+    def get_message(self):
+        return self.__header + ":" + " ".join(self.__content) + ":" + self.__md5
+
+    def set_header(self, _h):
+        if isinstance(_h, str):
+            self.__header = _h
+        else:
+            print("Error : Class Message > set_header")
+
+    def set_content(self, _c):
+        if isinstance(_c, str):
+            self.__content = _c
+        else:
+            print("Error : Class Message > set_content")
 
 
-#
-#
-# class Message(object):
-#     def __init__(self, _h, _c):
-#         if isinstance(_h, str) and isinstance(_c, str):
-#             self.__header = _h
-#             self.__content = _c
-#             tmp_hash = hashlib.md5((self.__header + self.__content + 'The-Salt.').encode("utf-8"))
-#             self.__md5 = tmp_hash.hexdigest()
-#         else:
-#             print("Error : Class Message Error > __init__")
-#
-#     def get_header(self):
-#         return self.__header
-#
-#     def get_content(self):
-#         return self.__content
-#
-#     def get_md5(self):
-#         return self.__md5
-#
-#     def set_header(self, _h):
-#         if isinstance(_h, str):
-#             self.__header = _h
-#         else:
-#             print("Error : Class Message > set_header")
-#
-#     def set_content(self, _c):
-#         if isinstance(_c, str):
-#             self.__content = _c
-#         else:
-#             print("Error : Class Message > set_content")
-#
-
-class Request(object):
-    def __init__(self, _t, _p):
-        # _r type : string - request type/function name
-        # _p type : list - params of the requested function
-        if isinstance(_t, str) and isinstance(_p, list):
-            self.__type = _t
-            self.__params = _p
-            self.__md5 = (hashlib.md5((_t + ":" + " ".join([str(i) for i in _p]) + ".SalT").encode("utf-8"))).hexdigest()
+class Request(Message):
+    def __init__(self, _msg):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1],
+                                                                               list and isinstance(_msg[2], str)):
+            Message.__init__(self, _msg)
+        elif isinstance(_msg, str):
+            Message.__init__(self, _msg)
         else:
             print("Error : Class Request Error > __init__")
 
-    def get_type(self):
-        return self.__type
 
-    def get_params(self):
-        return self.__params
-
-    def get_message(self):
-        return str(self.__type) + ":" + " ".join([str(i) for i in self.__params]) + ":" + self.__md5
-
-    def set_type(self, _t):
-        if isinstance(_t, str):
-            self.__type = _t
-        else:
-            print("Error : Class Request > set_type")
-
-    def set_params(self, _p):
-        if isinstance(_p, list):
-            self.__params = " ".join(str(_p))
-        else:
-            print("Error : Class Request > set_params")
-
-    def get_md5(self):
-        return self.__md5
-
-
-class Reply(object):
-    def __init__(self, _t, _v, _m):
-        # _t type : bool - request address succeed or fail
-        # _p type : list - return values if needed
-        # _m type : string - md5 code of the request
-        if isinstance(_t, bool) and isinstance(_v, list) and isinstance(_m, str):
-            self.__type = _t
-            self.__values = _v
-            self.__md5 = _m
+class Reply(Message):
+    def __init__(self, _msg):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], bool) and isinstance(_msg[1],
+                                                                                list and isinstance(_msg[2], str)):
+            _msg[0] = str(_msg[0])
+            Message.__init__(self, _msg)
+        elif isinstance(_msg, str) and (_msg.split(":")[0] == 'True' or _msg.split(":")[0] == "False"):
+            Message.__init__(self, _msg)
         else:
             print("Error : Class Reply Error > __init__")
-
-    def get_type(self):
-        return self.__type
-
-    def get_values(self):
-        return self.__values
-
-    def get_md5(self):
-        return self.__md5
-
-    def get_message(self):
-        return str(self.__type) + ":" + " ".join([str(i) for i in self.__values]) + ":" + self.__md5
-
-    def set_type(self, _t):
-        if isinstance(_t, bool):
-            self.__type = _t
-
-    def set_values(self, _v):
-        if isinstance(_v, list):
-            self.__values = _v
