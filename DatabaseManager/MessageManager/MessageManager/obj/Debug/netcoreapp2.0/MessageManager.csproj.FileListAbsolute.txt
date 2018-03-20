@@ -1,0 +1,11 @@
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\bin\Debug\netcoreapp2.0\MessageManager.deps.json
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\bin\Debug\netcoreapp2.0\MessageManager.runtimeconfig.json
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\bin\Debug\netcoreapp2.0\MessageManager.runtimeconfig.dev.json
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\bin\Debug\netcoreapp2.0\MessageManager.dll
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\bin\Debug\netcoreapp2.0\MessageManager.pdb
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.csprojResolveAssemblyReference.cache
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.csproj.CoreCompileInputs.cache
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.AssemblyInfoInputs.cache
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.AssemblyInfo.cs
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.dll
+C:\Users\Zhiquan.Wang\Documents\SourceCode\Project-Repository\ERP-Sandbox-Simulator-Alpha\DatabaseManager\MessageManager\MessageManager\obj\Debug\netcoreapp2.0\MessageManager.pdb

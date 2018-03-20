@@ -8,5 +8,5 @@ import Message
 
 if __name__ == '__main__':
     a = Message.Reply("True:2 3 4:asdasdavav3rs")
- 
+
 
