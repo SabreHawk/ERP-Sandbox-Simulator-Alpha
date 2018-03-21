@@ -5,8 +5,8 @@
 
 
 import Message
+import ServerNetwork
 
 if __name__ == '__main__':
-    a = Message.Reply("True:2 3 4:asdasdavav3rs")
-
-
+    tmp = ServerNetwork.ServerSocket('127.0.0.1', 8828)
+    tmp.launch_server()
