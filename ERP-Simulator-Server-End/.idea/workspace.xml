@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f91f0b9-c7f9-4877-ba34-ebe5253466ea" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ServerSystem.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/ERP-Simulator-Server-End.iml" afterPath="$PROJECT_DIR$/.idea/ERP-Simulator-Server-End.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
-      <change beforePath="$PROJECT_DIR$/testClient.py" afterPath="$PROJECT_DIR$/testClient.py" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="60" />
     <option name="width" value="980" />
@@ -55,7 +50,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="87" width="3226" height="1726" extended-state="6" />
+    <frame x="-13" y="87" width="3226" height="1726" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
