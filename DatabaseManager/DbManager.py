@@ -11,7 +11,7 @@ class DbManager(object):
     def __init__(self):
         self.__db_ip = 'localhost'
         self.__user_name = 'root'
-        self.__user_pwd = '0000'
+        self.__user_pwd = '110first'
         self.__db_name = 'erp_system_manager'
         self.__db = pymysql.connect(self.__db_ip, self.__user_name, self.__user_pwd, self.__db_name)
         self.__cursor = self.__db.cursor()

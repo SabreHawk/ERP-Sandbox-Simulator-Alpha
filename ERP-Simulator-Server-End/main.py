@@ -3,5 +3,10 @@
 # create data : 2018/03/17
 # author : Zhiquan.Wang
 
+from DbManager import *
+import dbcmd
+
 if __name__ == '__main__':
-    print("Launch ERP Simulator System")
+    ini_db = DbManager()
+    ini_db.execute(dbcmd.create_table_user_info)
+    ini_db.execute(dbcmd.insert_values_user_info)
