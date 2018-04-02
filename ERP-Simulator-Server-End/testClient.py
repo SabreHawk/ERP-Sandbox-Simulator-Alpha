@@ -11,15 +11,15 @@ def test(p):
     for data in range(10000):
         # 发送数据:
         s.send(('thread' + str(p) + ' : ' + str(data)).encode('utf-8'))
-        print(s.recv(1024).decode('utf-8'))
-    s.send(b'exit')
+        print("Client Thread " + str(p)+s.recv(1024).decode('utf-8'))
+
     s.close()
 
 
 if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # 建立连接:
-    s.connect(('192.168.43.94', 8828))
+    s.connect(('127.0.0.1', 8828))
     # 接收欢迎消息:
     for i in range(10):
         print("aa")
