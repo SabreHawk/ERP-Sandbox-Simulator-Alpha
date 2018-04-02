@@ -14,4 +14,5 @@ if __name__ == '__main__':
     # tmp.launch_server()
     ini_db = DbManager.DbManager()
     ini_db.execute(dbcmd.create_table_user_info)
-    ini_db.execute(dbcmd.insert_values_user_info)
+    # ini_db.execute(dbcmd.insert_values_user_info)
+    print("ok")

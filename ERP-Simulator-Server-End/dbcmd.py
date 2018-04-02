@@ -11,7 +11,7 @@ create_table_user_info = """CREATE TABLE `user_info` (
 );"""
 
 insert_values_user_info = """INSERT INTO user_info (user_name,pwd_md5)
-         VALUES ('Mohan', 'aaaa'),
-                ('John','bbbbb'),
-                ('Mike','cccc');"""
+         VALUES ('%s', '%s')"""
 
+select_values_user_info = """select count(*) from user_info 
+        where user_name = '%s'"""
