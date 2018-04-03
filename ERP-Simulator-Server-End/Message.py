@@ -6,16 +6,13 @@
 
 class Message(object):
     def __init__(self, _msg):
-        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list) and isinstance(_msg[2],
-                                                                                                             str):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list) and isinstance(_msg[2],str):
             self.__header = _msg[0]
             self.__content = " ".join([str(_msg[i]) for i in _msg[1]])
-            self.__md5 = _msg[2]
         elif isinstance(_msg, str):
             tmp_msg = _msg.split(":")
             self.__header = tmp_msg[0]
             self.__content = tmp_msg[1].split(" ")
-            self.__md5 = tmp_msg[2]
         else:
             print("Error : Class Message Error > __init__")
 
@@ -25,11 +22,8 @@ class Message(object):
     def get_content(self):
         return self.__content
 
-    def get_md5(self):
-        return self.__md5
-
     def get_message(self):
-        return self.__header + ":" + " ".join(self.__content) + ":" + self.__md5
+        return self.__header + ":" + " ".join(self.__content)
 
     def set_header(self, _h):
         if isinstance(_h, str):
@@ -46,8 +40,7 @@ class Message(object):
 
 class Request(Message):
     def __init__(self, _msg):
-        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1],
-                                                                               list and isinstance(_msg[2], str)):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list):
             Message.__init__(self, _msg)
         elif isinstance(_msg, str):
             Message.__init__(self, _msg)
@@ -57,8 +50,7 @@ class Request(Message):
 
 class Reply(Message):
     def __init__(self, _msg):
-        if isinstance(_msg, tuple) and isinstance(_msg[0], bool) and isinstance(_msg[1],
-                                                                                list and isinstance(_msg[2], str)):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], bool) and isinstance(_msg[1], list):
             _msg[0] = str(_msg[0])
             Message.__init__(self, _msg)
         elif isinstance(_msg, str) and (_msg.split(":")[0] == 'True' or _msg.split(":")[0] == "False"):
