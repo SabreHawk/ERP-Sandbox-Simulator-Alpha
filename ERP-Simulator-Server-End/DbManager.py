@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # create data : 2018/03/20
 # author : Zhiquan.Wang
-
-
+# Function : Manage Database Operation Of The Server End
+# Attention : Add Every Database Operation Into This Class As A Member Function
 import pymysql
 
 
@@ -39,7 +39,7 @@ class DbManager(object):
                 print(error)
                 return False
         else:
-            print("Error : Class DbManager Error > execute")
+            print("Error : Class DbManager Error > execute() - params must be a list or string")
             return False
 
     def query(self, _sql):
@@ -48,7 +48,7 @@ class DbManager(object):
                 self.__cursor.execute(str(_sql))
                 self.__db.commit()
                 t = self.__cursor.fetchone()
-                if(len(t) == 1):
+                if len(t) == 1:
                     return t[0]
                 else:
                     return False
@@ -58,3 +58,7 @@ class DbManager(object):
         else:
             print("Error : Class DbManager Error > execute")
             return False
+
+    def insert_user_info(self,_user_name,_user_pwd_md5):
+        insert_sql = """INSERT INTO user_info (user_name,pwd_md5) VALUES ('%s', '%s')""" % (_user_name, _user_pwd_md5)
+        ex

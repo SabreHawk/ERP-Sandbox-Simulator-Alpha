@@ -6,7 +6,7 @@
 
 class Message(object):
     def __init__(self, _msg):
-        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list) and isinstance(_msg[2],str):
+        if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list):
             self.__header = _msg[0]
             self.__content = " ".join([str(_msg[i]) for i in _msg[1]])
         elif isinstance(_msg, str):

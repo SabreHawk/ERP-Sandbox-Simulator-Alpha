@@ -2,46 +2,40 @@
 # -*- coding: utf-8 -*-
 # create data : 2018/03/26
 # author : Simin.Zhan
-
+# Function: Manage data operation of user information
+# Attention : All Of The Operation Related To The Database Should Be Operated By self.__ref_db_manager
+# Notes : 1) self.__db_manager is a reference Object passed from ServerSystem which is self.__db_manager
 
 import DbManager
-import dbcmd
 import ActiveUser
-import CreatePwdMd5
+import Md5Manager
 
 
 class UserManager(object):
-    def __init__(self):
-        # ini_db = DbManager.DbManager()
-        # ini_db.execute(dbcmd.create_table_user_info)
+    def __init__(self,_db_manager):
         self.active_list = []
+        if isinstance(_db_manager, DbManager.DbManager):
+            self.__ref_db_manager = _db_manager
+        else:
+            print("Error : Class UserManager  > __init__() - param must be a DbManager object")
 
     def register_user(self, user_name, pwd):
-        ini_db = DbManager.DbManager()
         query_sql = "select count(*) from user_info where user_name = '%s'" % user_name
-        temp_count = ini_db.query(query_sql)
-
-        create_pwd_md5 = CreatePwdMd5.CreatePwdMd5(user_name, pwd, "goodluck")
-        pwd_md5 = create_pwd_md5.create_md5()
-
+        temp_count = self.__ref_db_manager.query(query_sql)
+        pwd_md5 = Md5Manager.create_md5((user_name, pwd))
         if temp_count == 0:
-            insert_sql = dbcmd.insert_values_user_info % (user_name, pwd_md5)
-            ini_db.execute(insert_sql)
-            print("register succeed")
+            self.__ref_db_manager.insert_user_info(user_name,pwd_md5)
             return True
         elif temp_count == 1:
-            print("user_name exists")
+            print("Error : Class UserManager > register_user() - user_name exists")
             return False
         else:
-            print("error")
+            print("Error : Class UserManager > register_user() - unknown error")
             return False
 
     def login(self, user_name, pwd, socket, ip):
         ini_db = DbManager.DbManager()
-
-        create_pwd_md5 = CreatePwdMd5.CreatePwdMd5(user_name, pwd, "goodluck")
-        pwd_md5 = create_pwd_md5.create_md5()
-
+        pwd_md5 = Md5Manager.create_md5((user_name, pwd))
         query_sql = "select count(*) from user_info where user_name = '%s' " \
                     "and pwd_md5 = '%s'" % (user_name, pwd_md5)
         temp_count = ini_db.query(query_sql)
