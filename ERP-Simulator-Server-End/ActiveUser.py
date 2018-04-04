@@ -5,10 +5,12 @@
 
 
 class ActiveUser(object):
-    def __init__(self, id, socket, ip):
-        self.id = id
-        self.socket = socket
-        self.ip = ip
+    def __init__(self, _id, _socket):
+        self.__id = _id
+        self.__socket = _socket
 
     def get_parameters(self):
-        return [self.id, self.socket, self.ip]
+        return self.id, self.socket
+
+    def get_id(self):
+        return self.__id

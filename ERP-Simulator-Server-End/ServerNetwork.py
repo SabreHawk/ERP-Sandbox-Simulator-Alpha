@@ -18,15 +18,16 @@ class ServerSocket(object):
     def launch_server(self):
         self.__socket.listen(self.__max_connect_num)
         while True:
-            (client_socket, client_address) = self.__socket.accept()
-            address_thread = threading.Thread(target=self.__address_request, args=(client_socket, client_address))
+            client_socket_info = self.__socket.accept()
+            address_thread = threading.Thread(target=self.__address_request, args= client_socket_info)
             address_thread.start()
 
-    def __address_request(self, _c_socket, _c_ip):
+    def __address_request(self, _c_socket_info):
+        tmp_socket = _c_socket_info[0]
         while True:
-            data = _c_socket.recv(1024)
+            data = tmp_socket.recv(1024)
             if not data:
                 break
             print("Receive : " + data.decode('utf-8'))
-            _c_socket.send(('received ' + data.decode('utf-8')).encode('utf-8'))
-        _c_socket.close()
+            tmp_socket.send(('received ' + data.decode('utf-8')).encode('utf-8'))
+        tmp_socket.close()

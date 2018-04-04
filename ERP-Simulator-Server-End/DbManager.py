@@ -19,7 +19,7 @@ class DbManager(object):
     def close(self):
         self.__db.close()
 
-    def execute(self, _sql):
+    def __execute(self, _sql):
         if isinstance(_sql, list):
             for tmp_sql in list:
                 try:
@@ -42,16 +42,13 @@ class DbManager(object):
             print("Error : Class DbManager Error > execute() - params must be a list or string")
             return False
 
-    def query(self, _sql):
+    def __query(self, _sql):
         if isinstance(_sql, str):
             try:
                 self.__cursor.execute(str(_sql))
                 self.__db.commit()
-                t = self.__cursor.fetchone()
-                if len(t) == 1:
-                    return t[0]
-                else:
-                    return False
+                res = self.__cursor.fetchall()
+                return res
             except pymysql.DatabaseError as error:
                 print(error)
                 return False
@@ -59,6 +56,21 @@ class DbManager(object):
             print("Error : Class DbManager Error > execute")
             return False
 
-    def insert_user_info(self,_user_name,_user_pwd_md5):
+    def query_user_existence(self, _user_name):  # _user_name : string
+        query_sql = "select count(*) from user_info where user_name = '%s'" % _user_name
+        tmp_res = self.__query(query_sql)
+        print(tmp_res[0][0])
+        if tmp_res[0][0] == 1:
+            return True
+        else:
+            return False
+
+    def insert_user_info(self, _user_name, _user_pwd_md5):
         insert_sql = """INSERT INTO user_info (user_name,pwd_md5) VALUES ('%s', '%s')""" % (_user_name, _user_pwd_md5)
-        ex
+        self.__execute(insert_sql)
+
+    def query_login(self, _user_name, _pwd_md5):  # if exist _username match _pwd_md5 return user_id
+        tmp_sql = "select id from user_info where user_name = '%s' and pwd_md5 = '%s'" % (_user_name, _pwd_md5)
+        tmp_res = self.__query(tmp_sql)
+        return tmp_res[0][0]
+

@@ -10,9 +10,9 @@ import DbManager
 import dbcmd
 if __name__ == '__main__':
     # print("Start Server ")
-    # tmp = ServerNetwork.ServerSocket('127.0.0.1', 8828)
-    # tmp.launch_server()
-    ini_db = DbManager.DbManager()
-    ini_db.execute(dbcmd.create_table_user_info)
-    # ini_db.execute(dbcmd.insert_values_user_info)
+    tmp = ServerNetwork.ServerSocket('127.0.0.1', 8828)
+    tmp.launch_server()
+    print("Finish")
+    # ini_db = DbManager.DbManager()
+    # print(ini_db.query_user_existence('Mohsan'))
     print("ok")

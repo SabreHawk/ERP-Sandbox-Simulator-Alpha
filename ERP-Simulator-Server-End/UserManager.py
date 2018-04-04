@@ -19,45 +19,29 @@ class UserManager(object):
         else:
             print("Error : Class UserManager  > __init__() - param must be a DbManager object")
 
-    def register_user(self, user_name, pwd):
-        query_sql = "select count(*) from user_info where user_name = '%s'" % user_name
-        temp_count = self.__ref_db_manager.query(query_sql)
-        pwd_md5 = Md5Manager.create_md5((user_name, pwd))
-        if temp_count == 0:
-            self.__ref_db_manager.insert_user_info(user_name,pwd_md5)
-            return True
-        elif temp_count == 1:
+    def register_user(self, _user_name, _pwd):
+        if self.__ref_db_manager.query_user_existence(_user_name) is True:
             print("Error : Class UserManager > register_user() - user_name exists")
             return False
-        else:
-            print("Error : Class UserManager > register_user() - unknown error")
-            return False
+        pwd_md5 = Md5Manager.create_md5((_user_name, _pwd))
+        self.__ref_db_manager.insert_user_info(_user_name, pwd_md5)
+        return True
 
-    def login(self, user_name, pwd, socket, ip):
-        ini_db = DbManager.DbManager()
-        pwd_md5 = Md5Manager.create_md5((user_name, pwd))
-        query_sql = "select count(*) from user_info where user_name = '%s' " \
-                    "and pwd_md5 = '%s'" % (user_name, pwd_md5)
-        temp_count = ini_db.query(query_sql)
-        if temp_count == 0:
-            print("login fail")
+    def login(self, _user_name, _pwd, _socket):
+        pwd_md5 = Md5Manager.create_md5((_user_name, _pwd))
+        tmp_id = self.__ref_db_manager.query_login(_user_name,pwd_md5)
+        if tmp_id is None:
             return False
-        elif temp_count == 1:
-            query_id_sql = "select id from user_info where user_name = '%s'" % user_name
-            temp_id = ini_db.query(query_id_sql)
-            temp_active_user = ActiveUser.ActiveUser(temp_id, socket, ip)
+        else:
+            temp_active_user = ActiveUser.ActiveUser(tmp_id, _socket)
             self.active_list.append(temp_active_user)
-            print("login succeed")
             return True
 
-    def logout(self, id):
+    def logout(self, _id):
         for temp_active_user in self.active_list:
-            if temp_active_user.get_parameters()[0] == id:
+            if temp_active_user.get_id() == _id:
                 self.active_list.remove(temp_active_user)
-                print("logout succeed(id:", id, ")")
                 return True
-
-        print("logout fail")
         return False
 
     def get_active_list(self):
