@@ -1,0 +1,10 @@
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/bin/Debug/netcoreapp2.0/Trial-Cshaerp-Com.deps.json
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/bin/Debug/netcoreapp2.0/Trial-Cshaerp-Com.runtimeconfig.json
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/bin/Debug/netcoreapp2.0/Trial-Cshaerp-Com.runtimeconfig.dev.json
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/bin/Debug/netcoreapp2.0/Trial-Cshaerp-Com.dll
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/bin/Debug/netcoreapp2.0/Trial-Cshaerp-Com.pdb
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/obj/Debug/netcoreapp2.0/Trial-Cshaerp-Com.csproj.CoreCompileInputs.cache
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/obj/Debug/netcoreapp2.0/Trial-Cshaerp-Com.AssemblyInfoInputs.cache
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/obj/Debug/netcoreapp2.0/Trial-Cshaerp-Com.AssemblyInfo.cs
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/obj/Debug/netcoreapp2.0/Trial-Cshaerp-Com.dll
+/mnt/c/Users/Zhiquan.Wang/Documents/SourceCode/Git-Repository/ERP-Sandbox-Simulator-Alpha/Trial-Cshaerp-Com/obj/Debug/netcoreapp2.0/Trial-Cshaerp-Com.pdb

@@ -6,8 +6,8 @@
 
 class Factory(object):
 
-    def __init__(self, name):
-        self.__name = name
+    def __init__(self, _name):
+        self.__name = _name
         self.__purchase_cost = None
         self.__capacity = None
         self.__rent_cost = None
@@ -17,8 +17,8 @@ class Factory(object):
         self.__depreciation_rate = None
         self.__rent_to_purchase = None
 
-    def set_name(self, name):
-        self.__name = name
+    def set_name(self, _name):
+        self.__name = _name
 
     def get_name(self):
         return self.__name
@@ -29,35 +29,35 @@ class Factory(object):
     def get_purchase_cost(self):
         return self.__purchase_cost
 
-    def set_capacity(self, capacity):
-        self.__capacity = capacity
+    def set_capacity(self, _capacity):
+        self.__capacity = _capacity
 
-    def set_rent_cost(self, rent_cost):
-            self.__rent_cost = rent_cost
+    def set_rent_cost(self, _rent_cost):
+            self.__rent_cost = _rent_cost
 
     def get_rent_cost(self):
             return self.__rent_cost
 
-    def set_ownership(self, ownership):
-        self.__ownership = ownership
+    def set_ownership(self, _ownership):
+        self.__ownership = _ownership
 
     def get_ownership(self):
         return self.__ownership
 
-    def set_area(self, area):
-        self.__area = area
+    def set_area(self, _area):
+        self.__area = _area
 
     def get_area(self):
         return self.__area
 
-    def set_construction_time(self, construction_time):
-        self.__construction_time = construction_time
+    def set_construction_time(self, _construction_time):
+        self.__construction_time = _construction_time
 
     def get_construction_time(self):
         return self.__construction_time
 
-    def set_depreciation_rate(self, depreciation_rate):
-        self.__depreciation_rate = depreciation_rate
+    def set_depreciation_rate(self, _depreciation_rate):
+        self.__depreciation_rate = _depreciation_rate
 
     def get_depreciation_rate(self):
         return self.__depreciation_rate
