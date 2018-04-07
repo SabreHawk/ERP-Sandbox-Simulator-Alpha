@@ -3,6 +3,8 @@
 # create data : 2018/03/20
 # author : Zhiquan.Wang
 
+import MessageList
+
 
 class Message(object):
     def __init__(self, _msg):
@@ -40,6 +42,7 @@ class Message(object):
 
 class Request(Message):
     def __init__(self, _msg):
+        self.__extra_info = ''
         if isinstance(_msg, tuple) and isinstance(_msg[0], str) and isinstance(_msg[1], list):
             Message.__init__(self, _msg)
         elif isinstance(_msg, str):
@@ -47,13 +50,30 @@ class Request(Message):
         else:
             print("Error : Class Request Error > __init__")
 
+    def is_illegal(self):
+        tmp_request = self.__header
+        if tmp_request not in MessageList.message_list:
+            return False
+        return True
+
 
 class Reply(Message):
     def __init__(self, _msg):
         if isinstance(_msg, tuple) and isinstance(_msg[0], bool) and isinstance(_msg[1], list):
             _msg[0] = str(_msg[0])
             Message.__init__(self, _msg)
+            if len(_msg) == 3:
+                if isinstance(_msg[2], str):
+                    self.__extra_info = _msg[2]
+                else:
+                    print("Error : Class Request Error > __init__ - Extra Information Must Be A String")
         elif isinstance(_msg, str) and (_msg.split(":")[0] == 'True' or _msg.split(":")[0] == "False"):
             Message.__init__(self, _msg)
         else:
             print("Error : Class Reply Error > __init__")
+
+    def set_extra_info(self, _ext_info):
+        self.__extra_info = _ext_info
+
+    def get_message(self):
+        return self.get_message() + ":" + self.__extra_info

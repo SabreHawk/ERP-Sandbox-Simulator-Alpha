@@ -12,7 +12,7 @@ import Md5Manager
 
 
 class UserManager(object):
-    def __init__(self,_db_manager):
+    def __init__(self, _db_manager):
         self.active_list = []
         if isinstance(_db_manager, DbManager.DbManager):
             self.__ref_db_manager = _db_manager
@@ -29,7 +29,7 @@ class UserManager(object):
 
     def login(self, _user_name, _pwd, _socket):
         pwd_md5 = Md5Manager.create_md5((_user_name, _pwd))
-        tmp_id = self.__ref_db_manager.query_login(_user_name,pwd_md5)
+        tmp_id = self.__ref_db_manager.query_login(_user_name, pwd_md5)
         if tmp_id is None:
             return False
         else:

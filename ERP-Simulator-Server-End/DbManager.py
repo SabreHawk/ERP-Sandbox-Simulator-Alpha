@@ -68,6 +68,7 @@ class DbManager(object):
     def insert_user_info(self, _user_name, _user_pwd_md5):
         insert_sql = """INSERT INTO user_info (user_name,pwd_md5) VALUES ('%s', '%s')""" % (_user_name, _user_pwd_md5)
         self.__execute(insert_sql)
+        return True
 
     def query_login(self, _user_name, _pwd_md5):  # if exist _username match _pwd_md5 return user_id
         tmp_sql = "select id from user_info where user_name = '%s' and pwd_md5 = '%s'" % (_user_name, _pwd_md5)
