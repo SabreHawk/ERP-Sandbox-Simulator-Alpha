@@ -5,14 +5,17 @@
 
 import ServerNetwork
 import DbManager
+import ServiceManager
 import UserManager
 
 
 class ServerSystem(object):
     def __init__(self, _ip, _p):
-        self.__server_socket = ServerNetwork.ServerSocket(_ip, _p)
         self.__db_manager = DbManager.DbManager()
         self.__user_manager = UserManager.UserManager()
+        self.__service_manager = ServiceManager.ServiceManager(self.__user_manager)
+        self.__server_socket = ServerNetwork.ServerSocket(_ip, _p,self.__service_manager)
+
 
     def launch(self):
         self.__server_socket.launch_server()
