@@ -31,11 +31,11 @@ class UserManager(object):
         pwd_md5 = Md5Manager.create_md5((_user_name, _pwd))
         tmp_id = self.__ref_db_manager.query_login(_user_name, pwd_md5)
         if tmp_id is None:
-            return False
+            return None
         else:
             temp_active_user = ActiveUser.ActiveUser(tmp_id, _socket)
             self.active_list.append(temp_active_user)
-            return True
+            return tmp_id
 
     def logout(self, _id):
         for temp_active_user in self.active_list:

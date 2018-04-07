@@ -8,8 +8,9 @@ import threading
 import Message
 import ServiceManager
 
+
 class ServerSocket(object):
-    def __init__(self, _ip, _p,_s_manager):
+    def __init__(self, _ip, _p, _s_manager):
         self.__host_ip = _ip
         self.__port = _p
         self.__socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,8 +32,7 @@ class ServerSocket(object):
             data = client_socket.recv(1024)
             if not data:
                 break
-        client_request = Message.Request(data)
-        self.__ref_ser_manager.address_request(client_request)
-
-        # client_socket.close()
-
+        client_request = Message.Request(data.decode('utf-8'))
+        server_reply = self.__ref_ser_manager.address_request(client_request)
+        client_socket.send(server_reply.get_message().encode('utf-8'))
+        client_socket.close()
