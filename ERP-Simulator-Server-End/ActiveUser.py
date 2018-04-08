@@ -12,5 +12,8 @@ class ActiveUser(object):
     def get_parameters(self):
         return self.id, self.socket
 
+    def get_socket(self):
+        return self.__socket
+
     def get_id(self):
         return self.__id

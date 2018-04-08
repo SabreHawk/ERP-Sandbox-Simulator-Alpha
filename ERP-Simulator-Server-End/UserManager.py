@@ -38,9 +38,10 @@ class UserManager(object):
             return tmp_id
 
     def logout(self, _id):
-        for temp_active_user in self.active_list:
-            if temp_active_user.get_id() == _id:
-                self.active_list.remove(temp_active_user)
+        for tmp_active_user in self.active_list:
+            if tmp_active_user.get_id() == _id:
+                tmp_active_user.get_socket().close()
+                self.active_list.remove(tmp_active_user)
                 return True
         return False
 

@@ -29,18 +29,9 @@ class ServerSocket(object):
     def __address_request(self, _c_socket_info):
         # Receive Client Message
         client_socket = _c_socket_info[0]
-        print('Address Request :'+ str(client_socket))
-        counter = 1;
         while True:
-            print(counter)
-            counter = counter + 1
-            data = client_socket.recv(1024)
-            print(data.decode('utf-8'))
-            if not data:
-                print('break') 
-                break
-        print('Client Message Received')
-        client_request = Message.Request(data.decode('utf-8'))
-        server_reply = self.__ref_ser_manager.address_request(client_request)
-        client_socket.send(server_reply.get_message().encode('utf-8'))
-        client_socket.close()
+            data = client_socket.recv(2048)
+            client_request = Message.Request(data.decode('utf-8'))
+            server_reply = self.__ref_ser_manager.address_request(client_request,_c_socket_info)
+            client_socket.send(server_reply.get_message().encode('utf-8'))
+            # close client socket connect at UserManager:logout()
