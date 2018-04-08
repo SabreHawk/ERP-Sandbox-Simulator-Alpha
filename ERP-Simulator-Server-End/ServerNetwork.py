@@ -32,6 +32,7 @@ class ServerSocket(object):
             data = client_socket.recv(1024)
             if not data:
                 break
+
         client_request = Message.Request(data.decode('utf-8'))
         server_reply = self.__ref_ser_manager.address_request(client_request)
         client_socket.send(server_reply.get_message().encode('utf-8'))
