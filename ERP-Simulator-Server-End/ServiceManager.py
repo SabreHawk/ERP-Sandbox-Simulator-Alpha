@@ -36,7 +36,7 @@ class ServiceManager(object):
         if len(_c_msg.get_content()) == 2:
             tmp_result = self.__ref_user_manager.login(_c_msg.get_content()[0], _c_msg.get_content()[1], _c_socket_info[0])
             if tmp_result is None:
-                ext_info = 'Login Unsuccessfully'
+                ext_info = 'Login Unsuccessfully - No Such Account Or Wrong Password'
                 reply_type = False
                 return Message.Reply((reply_type, [], ext_info))
             else:
@@ -57,7 +57,7 @@ class ServiceManager(object):
         return Message.Reply((tmp_result, [], ext_info))
 
     def __address_register(self, _c_msg):
-        tmp_result = self.__ref_user_manager.register_user(_c_msg.get_content()[0], _c_msg.get_content[1])
+        tmp_result = self.__ref_user_manager.register_user(_c_msg.get_content()[0], _c_msg.get_content()[1])
         if tmp_result is False:
             ext_info = "User Name Existed Or Other Error"
         else:

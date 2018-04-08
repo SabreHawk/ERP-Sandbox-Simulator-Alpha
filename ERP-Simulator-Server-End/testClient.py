@@ -7,7 +7,8 @@ import threading
 
 
 def test():
-    s.send(('login:'+'myuser'+' '+'123').encode('utf-8'))
+    #s.send(('login:'+'sabrehawk'+' '+'wzqcd753951').encode('utf-8'))
+    s.send(('logout:'+'4').encode('utf-8'))
     print("Client Receive : "+s.recv(1024).decode('utf-8'))
     s.close()
 

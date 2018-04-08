@@ -59,7 +59,6 @@ class DbManager(object):
     def query_user_existence(self, _user_name):  # _user_name : string
         query_sql = "select count(*) from user_info where user_name = '%s'" % _user_name
         tmp_res = self.__query(query_sql)
-        print(tmp_res[0][0])
         if tmp_res[0][0] == 1:
             return True
         else:

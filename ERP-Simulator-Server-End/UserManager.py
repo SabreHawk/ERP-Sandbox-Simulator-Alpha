@@ -13,7 +13,7 @@ import Md5Manager
 
 class UserManager(object):
     def __init__(self, _db_manager):
-        self.active_list = []
+        self._active_list = []
         if isinstance(_db_manager, DbManager.DbManager):
             self.__ref_db_manager = _db_manager
         else:
@@ -29,21 +29,27 @@ class UserManager(object):
 
     def login(self, _user_name, _pwd, _socket):
         pwd_md5 = Md5Manager.create_md5((_user_name, _pwd))
+        # conclude if exist account
         tmp_id = self.__ref_db_manager.query_login(_user_name, pwd_md5)
         if tmp_id is None:
             return None
         else:
-            temp_active_user = ActiveUser.ActiveUser(tmp_id, _socket)
-            self.active_list.append(temp_active_user)
+            # if relogin ,exit the former account
+            for tmp_act in self._active_list:
+                if tmp_act.get_id() == tmp_id:
+                    self._active_list.remove(tmp_act)
+                    break
+            tmp_active_user = ActiveUser.ActiveUser(str(tmp_id), _socket)
+            self._active_list.append(tmp_active_user)
             return tmp_id
 
     def logout(self, _id):
-        for tmp_active_user in self.active_list:
+        for tmp_active_user in self._active_list:
             if tmp_active_user.get_id() == _id:
                 tmp_active_user.get_socket().close()
-                self.active_list.remove(tmp_active_user)
+                self._active_list.remove(tmp_active_user)
                 return True
         return False
 
     def get_active_list(self):
-        return self.active_list
+        return self._active_list

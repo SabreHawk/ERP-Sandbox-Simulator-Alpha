@@ -31,6 +31,8 @@ class ServerSocket(object):
         client_socket = _c_socket_info[0]
         while True:
             data = client_socket.recv(2048)
+            if not data:
+                break
             client_request = Message.Request(data.decode('utf-8'))
             server_reply = self.__ref_ser_manager.address_request(client_request,_c_socket_info)
             client_socket.send(server_reply.get_message().encode('utf-8'))
