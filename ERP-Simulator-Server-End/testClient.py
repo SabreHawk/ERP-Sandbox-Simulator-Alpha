@@ -7,8 +7,8 @@ import threading
 
 
 def test():
-    #s.send(('login:'+'sabrehawk'+' '+'wzqcd753951').encode('utf-8'))
-    #s.send(('logout:'+'4').encode('utf-8'))
+    # s.send(('login:'+'sabrehawk'+' '+'wzqcd753951').encode('utf-8'))
+    # s.send(('logout:'+'4').encode('utf-8'))
     s.send(('register:'+'zsm'+' '+'110first').encode('utf-8'))
     print("Client Receive : "+s.recv(1024).decode('utf-8'))
     s.close()
@@ -16,6 +16,6 @@ def test():
 
 if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('127.0.0.1', 8828))
+    s.connect(('192.168.43.94', 8828))
     t = threading.Thread(target=test, args=())
     t.start()

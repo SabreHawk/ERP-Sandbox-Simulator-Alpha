@@ -18,3 +18,8 @@
     1. Modify Method (Class User Manager) : login() - delete param : id when add active user into active_list
     2. Modify Class ActiveUser :Delelte member:ip & add method :get_id()
     3. Modify Class ServerNetwork : Simplify Method launch_server & __address_requset()
+* 2018/04/09 11：27 - Simin.Zhan
+  * Summary : Consummate dbcmd.py
+  * Attention : Untested
+  * Detials :
+    Add create_table_factory_info & create_table_production_line_info
