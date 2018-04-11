@@ -9,8 +9,8 @@ class Factory(object):
     def __init__(self, _name):
         self.__name = _name
         self.__purchase_cost = None
-        self.__capacity = None
         self.__rent_cost = None
+        self.__capacity = None
         self.__ownership = None
         self.__area = None
         self.__construction_time = None

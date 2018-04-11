@@ -30,10 +30,10 @@ class ServerSocket(object):
         # Receive Client Message
         client_socket = _c_socket_info[0]
         while True:
-            data = client_socket.recv(2048)
+            data = client_socket.recv(2048).decode('utf-8')
             if not data:
                 break
-            client_request = Message.Request(data.decode('utf-8'))
+            client_request = Message.Request(data)
             server_reply = self.__ref_ser_manager.address_request(client_request,_c_socket_info)
-            client_socket.send(server_reply.get_message().encode('utf-8'))
-            # close client socket connect at UserManager:logout()
+            client_socket.sendall(server_reply.get_message().encode('utf-8'))
+            client_socket.close()
