@@ -8,14 +8,22 @@ class Factory(object):
 
     def __init__(self, _name):
         self.__name = _name
+<<<<<<< HEAD
         self.__purchase_cost = None
         self.__rent_cost = None
         self.__capacity = None
         self.__ownership = None
+=======
+        self.__capacity = None
+>>>>>>> tmp
         self.__area = None
+        self.__purchase_cost = None
+        self.__rent_cost = None
+        self.__rent_to_purchase_cost = None
         self.__construction_time = None
+        self.__ownership = None
         self.__depreciation_rate = None
-        self.__rent_to_purchase = None
+        self.__salvage_value = None
 
     def set_name(self, _name):
         self.__name = _name
@@ -62,8 +70,14 @@ class Factory(object):
     def get_depreciation_rate(self):
         return self.__depreciation_rate
 
-    def set_rent_to_purchase(self, rent_to_purchase):
-        self.__rent_to_purchase = rent_to_purchase
+    def set_rent_to_purchase_cost(self, _rent_to_purchase_cost):
+        self.__rent_to_purchase_cost = _rent_to_purchase_cost
 
-    def get_rent_to_purchase(self):
+    def get_rent_to_purchase_cost(self):
         return self.__rent_to_purchase
+
+    def set_salvage_value(self, _salvage_value):
+        self.__salvage_value = _salvage_value
+
+    def get_salvage_value(self):
+        return self.__salvage_value

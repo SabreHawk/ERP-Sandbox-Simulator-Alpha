@@ -11,9 +11,10 @@ class ProductionLine(object):
         self.__construction_time = None
         self.__construction_cost = None
         self.__rent_cost = None
-        self.__depreciation_rate = None
         self.__repair_cost = None
         self.__productivity = None
+        self.__depreciation_rate = None
+        self.__salvage_value = None
         self.__is_transfer = None
         self.__transfer_time = None
         self.__transfer_cost = None
@@ -78,3 +79,9 @@ class ProductionLine(object):
 
     def get_transfer_cost(self):
         return self.__transfer_cost
+
+    def set_salvage_value(self,_salvage_value):
+        self.__salvage_value = _salvage_value
+
+    def get_salvage_value(self):
+        return self.__salvage_value
