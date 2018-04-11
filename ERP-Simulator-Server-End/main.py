@@ -7,11 +7,7 @@ import ServerSystem
 import sys
 
 if __name__ == '__main__':
-<<<<<<< HEAD
+   
     #erp_server = ServerSystem.ServerSystem(sys.argv[1], int(sys.argv[2]))
-    erp_server = ServerSystem.ServerSystem('192.168.43.128', 8828)
-=======
-    erp_server = ServerSystem.ServerSystem(sys.argv[1], int(sys.argv[2]))
-    # erp_server = ServerSystem.ServerSystem('127.0.0.1', 8828)
->>>>>>> tmp
+    erp_server = ServerSystem.ServerSystem('140.1.250.82', 8828)
     erp_server.launch()
