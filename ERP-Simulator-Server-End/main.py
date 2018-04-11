@@ -9,5 +9,5 @@ import sys
 if __name__ == '__main__':
    
     #erp_server = ServerSystem.ServerSystem(sys.argv[1], int(sys.argv[2]))
-    erp_server = ServerSystem.ServerSystem('140.1.250.82', 8828)
+    erp_server = ServerSystem.ServerSystem('140.1.82.250', 8828)
     erp_server.launch()
