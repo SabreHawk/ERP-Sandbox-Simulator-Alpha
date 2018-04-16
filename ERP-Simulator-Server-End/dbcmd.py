@@ -29,7 +29,7 @@ create_table_factory_info = """CREATE TABLE `factory_info` (
   `rent_to_purchase_cost` int(10) NOT NULL,
   `construction_time` int(10) NOT NULL,
   `ownership` int(10) NOT NULL,
-  `depreciation` float(10) NOT NULL,
+  `depreciation` float(10,3) NOT NULL,
   `salvage_value` int(10) NOT NULL
 );"""
 
