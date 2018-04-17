@@ -4,7 +4,7 @@
 # author : Simin.Zhan
 
 
-class ProductionCertification(object):
+class ProductionCertificationInfo(object):
 
     def __init__(self, _name):
         self.__name = _name
