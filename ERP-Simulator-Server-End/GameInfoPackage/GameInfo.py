@@ -15,6 +15,14 @@ class GameInfo(object):
         self._enroll_start_time = None
         self._enroll_end_time = None
 
+    def set_params(self, _params):
+        self._start_time = _params[0]
+        self._max_player = _params[1]
+        self._is_pwd = _params[2]
+        self._enroll_pwd = _params[3]
+        self._enroll_start_time = _params[4]
+        self._enroll_end_time = _params[5]
+
     def set_name(self, _name):
         self._name = _name
 

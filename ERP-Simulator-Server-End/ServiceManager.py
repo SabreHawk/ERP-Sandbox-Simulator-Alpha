@@ -4,14 +4,16 @@
 # author : Zhiquan.Wang
 
 import Message
-import UserManager
 from MessageList import *
 import logging
+import Game
+import GameInfo
+import GameRule
 
 
 class ServiceManager(object):
 
-    def __init__(self, _user_manager,_game_manager):
+    def __init__(self, _user_manager, _game_manager):
         self.__ref_user_manager = _user_manager
         self.__ref_game_manager = _game_manager
 
@@ -38,7 +40,6 @@ class ServiceManager(object):
             logging.ERROR('Class:ServiceManager:address_request')
             return Message.Reply((False, [], 'Exception!'))
 
-
     def __address_login(self, _c_msg, _c_socket_info):
         try:
             if len(_c_msg.get_content()) == 2:
@@ -60,7 +61,6 @@ class ServiceManager(object):
             logging.ERROR('Class:ServiceManager:address_logging')
             return Message.Reply((False, [], 'Exception!'))
 
-
     def __address_logout(self, _c_msg):
         try:
             tmp_result = self.__ref_user_manager.logout(_c_msg.get_content()[0])
@@ -72,7 +72,6 @@ class ServiceManager(object):
         except Exception:
             logging.ERROR('Class:ServiceManager:address_logout')
             return Message.Reply((False, [], 'Exception!'))
-
 
     def __address_register(self, _c_msg):
         try:
@@ -86,4 +85,9 @@ class ServiceManager(object):
             logging.ERROR('Class:ServiceManager:address_register')
             return Message.Reply((False, [], 'Exception!'))
 
-    def __create_game(self,_message):
+    def __create_game(self, _c_msg):
+        try:
+            tmp_game_info = GameInfo.GameInfo()
+            tmp_game_info.set_params()
+        except Exception:
+            logging.ERROR('Class:ServiceManager:create_game')
