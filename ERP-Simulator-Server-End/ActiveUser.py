@@ -10,7 +10,7 @@ class ActiveUser(object):
         self.__socket = _socket
 
     def get_parameters(self):
-        return self.id, self.socket
+        return self.__id, self.__socket
 
     def get_socket(self):
         return self.__socket

@@ -11,8 +11,9 @@ import logging
 
 class ServiceManager(object):
 
-    def __init__(self, _user_manager):
+    def __init__(self, _user_manager,_game_manager):
         self.__ref_user_manager = _user_manager
+        self.__ref_game_manager = _game_manager
 
     def address_request(self, _client_request, _c_socket_info):
         try:
@@ -38,49 +39,51 @@ class ServiceManager(object):
             return Message.Reply((False, [], 'Exception!'))
 
 
-def __address_login(self, _c_msg, _c_socket_info):
-    try:
-        if len(_c_msg.get_content()) == 2:
-            tmp_result = self.__ref_user_manager.login(_c_msg.get_content()[0], _c_msg.get_content()[1],
-                                                       _c_socket_info[0])
-            if tmp_result is None:
-                ext_info = 'Login Unsuccessfully - No Such Account Or Wrong Password'
+    def __address_login(self, _c_msg, _c_socket_info):
+        try:
+            if len(_c_msg.get_content()) == 2:
+                tmp_result = self.__ref_user_manager.login(_c_msg.get_content()[0], _c_msg.get_content()[1],
+                                                           _c_socket_info[0])
+                if tmp_result is None:
+                    ext_info = 'Login Unsuccessfully - No Such Account Or Wrong Password'
+                    reply_type = False
+                    return Message.Reply((reply_type, [], ext_info))
+                else:
+                    ext_info = 'Login Successfully'
+                    reply_type = True
+                    return Message.Reply((reply_type, [tmp_result], ext_info))
+            else:
+                ext_info = 'Login Parameter Illegal'
                 reply_type = False
                 return Message.Reply((reply_type, [], ext_info))
+        except Exception:
+            logging.ERROR('Class:ServiceManager:address_logging')
+            return Message.Reply((False, [], 'Exception!'))
+
+
+    def __address_logout(self, _c_msg):
+        try:
+            tmp_result = self.__ref_user_manager.logout(_c_msg.get_content()[0])
+            if tmp_result is False:
+                ext_info = 'User Is Not Active'
             else:
-                ext_info = 'Login Successfully'
-                reply_type = True
-                return Message.Reply((reply_type, [tmp_result], ext_info))
-        else:
-            ext_info = 'Login Parameter Illegal'
-            reply_type = False
-            return Message.Reply((reply_type, [], ext_info))
-    except Exception:
-        logging.ERROR('Class:ServiceManager:address_logging')
-        return Message.Reply((False, [], 'Exception!'))
+                ext_info = 'Logout Successfully'
+            return Message.Reply((tmp_result, [], ext_info))
+        except Exception:
+            logging.ERROR('Class:ServiceManager:address_logout')
+            return Message.Reply((False, [], 'Exception!'))
 
 
-def __address_logout(self, _c_msg):
-    try:
-        tmp_result = self.__ref_user_manager.logout(_c_msg.get_content()[0])
-        if tmp_result is False:
-            ext_info = 'User Is Not Active'
-        else:
-            ext_info = 'Logout Successfully'
-        return Message.Reply((tmp_result, [], ext_info))
-    except Exception:
-        logging.ERROR('Class:ServiceManager:address_logout')
-        return Message.Reply((False, [], 'Exception!'))
+    def __address_register(self, _c_msg):
+        try:
+            tmp_result = self.__ref_user_manager.register_user(_c_msg.get_content()[0], _c_msg.get_content()[1])
+            if tmp_result is False:
+                ext_info = "User Name Existed Or Other Error"
+            else:
+                ext_info = 'Register Successfully ' + _c_msg.get_content()[0]
+            return Message.Reply((tmp_result, [], ext_info))
+        except Exception:
+            logging.ERROR('Class:ServiceManager:address_register')
+            return Message.Reply((False, [], 'Exception!'))
 
-
-def __address_register(self, _c_msg):
-    try:
-        tmp_result = self.__ref_user_manager.register_user(_c_msg.get_content()[0], _c_msg.get_content()[1])
-        if tmp_result is False:
-            ext_info = "User Name Existed Or Other Error"
-        else:
-            ext_info = 'Register Successfully ' + _c_msg.get_content()[0]
-        return Message.Reply((tmp_result, [], ext_info))
-    except Exception:
-        logging.ERROR('Class:ServiceManager:address_register')
-        return Message.Reply((False, [], 'Exception!'))
+    def __create_game(self,_message):

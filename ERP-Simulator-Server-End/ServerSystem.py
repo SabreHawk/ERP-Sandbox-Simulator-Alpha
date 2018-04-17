@@ -7,6 +7,7 @@ import ServerNetwork
 import DbManager
 import ServiceManager
 import UserManager
+import GameManager
 import logging
 
 
@@ -14,6 +15,7 @@ class ServerSystem(object):
     def __init__(self, _ip, _p):
         self.__db_manager = DbManager.DbManager()
         self.__user_manager = UserManager.UserManager(self.__db_manager)
+        self.__game_manager
         self.__service_manager = ServiceManager.ServiceManager(self.__user_manager)
         self.__server_socket = ServerNetwork.ServerSocket(_ip, _p, self.__service_manager)
 
