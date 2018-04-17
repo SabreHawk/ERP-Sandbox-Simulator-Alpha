@@ -19,7 +19,7 @@ def test():
 
 if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('127.0.0.1', 8828))
+    s.connect(('140.82.1.250', 8828))
     t = threading.Thread(target=test, args=())
     t.start()
     

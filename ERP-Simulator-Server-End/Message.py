@@ -4,6 +4,7 @@
 # author : Zhiquan.Wang
 
 from MessageList import *
+import logging
 
 
 class Message(object):
@@ -19,7 +20,7 @@ class Message(object):
                     self.__extra_info = _msg[2]
                 else:
                     self.__illegal = False
-                    print("Error : Class Message Error > __init__ - Extra Information Must Be A String")
+                    logging.WARNING("Error : Class Message Error > __init__ - Extra Information Must Be A String")
         elif isinstance(_msg, str):
             tmp_msg = _msg.split(":")
             if len(tmp_msg) < 2:
@@ -32,10 +33,10 @@ class Message(object):
                     self.__extra_info = tmp_msg[2]
                 else:
                     self.__illegal = False
-                    print("Error : Class Message Error > __init__ - Extra Information Must Be A String")
+                    logging.WARNING("Error : Class Message Error > __init__ - Extra Information Must Be A String")
         else:
             self.__illegal = False
-            print("Error : Class Message Error > __init__")
+            logging.WARNING("Error : Class Message Error > __init__")
 
     def get_header(self):
         return self.__header
@@ -45,19 +46,19 @@ class Message(object):
 
     def get_message(self):
         tmp_c = [str(tmp) for tmp in self.get_content()]
-        return self.__header + ":" + " ".join(tmp_c)+":"+self.__extra_info
+        return self.__header + ":" + " ".join(tmp_c) + ":" + self.__extra_info
 
     def set_header(self, _h):
         if isinstance(_h, str):
             self.__header = _h
         else:
-            print("Error : Class Message > set_header")
+            logging.WARNING("Error : Class Message > set_header")
 
     def set_content(self, _c):
         if isinstance(_c, str):
             self.__content = _c
         else:
-            print("Error : Class Message > set_content")
+            logging.WARNING("Error : Class Message > set_content")
 
     def set_extra_info(self, _ext_info):
         self.__extra_info = _ext_info
@@ -73,7 +74,7 @@ class Request(Message):
         elif isinstance(_msg, str):
             Message.__init__(self, _msg)
         else:
-            print("Error : Class Request Error > __init__")
+            logging.WARNING("Error : Class Request Error > __init__")
 
     def is_illegal(self):
         tmp_request = self.get_header()
@@ -91,4 +92,4 @@ class Reply(Message):
         elif isinstance(_msg, str) and (_msg.split(":")[0] == 'True' or _msg.split(":")[0] == "False"):
             Message.__init__(self, _msg)
         else:
-            print("Error : Class Reply Error > __init__")
+            logging.WARNING("Error : Class Reply Error > __init__")

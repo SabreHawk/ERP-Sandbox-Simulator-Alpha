@@ -8,14 +8,7 @@ class Factory(object):
 
     def __init__(self, _name):
         self.__name = _name
-<<<<<<< HEAD
-        self.__purchase_cost = None
-        self.__rent_cost = None
         self.__capacity = None
-        self.__ownership = None
-=======
-        self.__capacity = None
->>>>>>> tmp
         self.__area = None
         self.__purchase_cost = None
         self.__rent_cost = None
