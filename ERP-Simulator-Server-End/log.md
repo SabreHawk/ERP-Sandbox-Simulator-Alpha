@@ -21,5 +21,12 @@
 * 2018/04/09 11：27 - Simin.Zhan
   * Summary : Consummate dbcmd.py
   * Attention : Untested
-  * Detials :
-    Add create_table_factory_info & create_table_production_line_info
+  * Detials : 
+  * 1. Add create_table_factory_info & create_table_production_line_info
+
+2018/04/04 19:14 - Zhiquan.Wang
+
+- Summary : Add GameManager.py Game.py & Modify UserManager.py & Modify Logging Message 
+- Attention : tested
+- Detials :
+  1. Modify Method (Class User Manager) : trans active_user.id to login_id
