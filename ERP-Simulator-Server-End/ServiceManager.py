@@ -5,10 +5,9 @@
 
 import Message
 from MessageList import *
+from GameInfoPackage.GameInfo import *
+from GameInfoPackage.GameRule import *
 import logging
-import Game
-import GameInfo
-import GameRule
 
 
 class ServiceManager(object):
@@ -37,7 +36,7 @@ class ServiceManager(object):
                 ext_info = 'Error : Unknown illegal'
                 return Message.Reply((req_result, [], ext_info))
         except Exception:
-            logging.ERROR('Class:ServiceManager:address_request')
+            logging.exception('Class:ServiceManager:address_request')
             return Message.Reply((False, [], 'Exception!'))
 
     def __address_login(self, _c_msg, _c_socket_info):
@@ -58,7 +57,7 @@ class ServiceManager(object):
                 reply_type = False
                 return Message.Reply((reply_type, [], ext_info))
         except Exception:
-            logging.ERROR('Class:ServiceManager:address_logging')
+            logging.exception('Class:ServiceManager:address_logging')
             return Message.Reply((False, [], 'Exception!'))
 
     def __address_logout(self, _c_msg):
@@ -70,7 +69,7 @@ class ServiceManager(object):
                 ext_info = 'Logout Successfully'
             return Message.Reply((tmp_result, [], ext_info))
         except Exception:
-            logging.ERROR('Class:ServiceManager:address_logout')
+            logging.exception('Class:ServiceManager:address_logout')
             return Message.Reply((False, [], 'Exception!'))
 
     def __address_register(self, _c_msg):
@@ -82,7 +81,7 @@ class ServiceManager(object):
                 ext_info = 'Register Successfully ' + _c_msg.get_content()[0]
             return Message.Reply((tmp_result, [], ext_info))
         except Exception:
-            logging.ERROR('Class:ServiceManager:address_register')
+            logging.exception('Class:ServiceManager:address_register')
             return Message.Reply((False, [], 'Exception!'))
 
     def __create_game(self, _c_msg):
@@ -90,4 +89,4 @@ class ServiceManager(object):
             tmp_game_info = GameInfo.GameInfo()
             tmp_game_info.set_params()
         except Exception:
-            logging.ERROR('Class:ServiceManager:create_game')
+            logging.exception('Class:ServiceManager:create_game')

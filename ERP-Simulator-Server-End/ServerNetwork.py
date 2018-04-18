@@ -29,18 +29,20 @@ class ServerSocket(object):
                 address_thread = threading.Thread(target=self.__address_request, args=(client_socket_info,))
                 address_thread.start()
         except Exception:
-            logging.ERROR('Launch Server System Failed')
+            logging.exception('Launch Server System Failed')
 
     def __address_request(self, _c_socket_info):
+        client_socket = _c_socket_info[0]
         try:
             # Receive Client Message
-            client_socket = _c_socket_info[0]
             while True:
                 data = client_socket.recv(2048)
                 if not data:
                     break
-                server_reply = self.__ref_ser_manager.address_request(client_request, _c_socket_info)
+                client_msg = Message.Request(data.decode('utf-8'))
+                server_reply = self.__ref_ser_manager.address_request(client_msg, _c_socket_info)
                 client_socket.sendall(server_reply.get_message().encode('utf-8'))
             client_socket.close()
         except Exception:
-            logging.ERROR('Class:ServerNetwork:address_request')
+            logging.exception('Class:ServerNetwork:address_request')
+            client_socket.close()

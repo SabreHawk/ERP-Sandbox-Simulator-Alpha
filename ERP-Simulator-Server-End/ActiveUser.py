@@ -6,14 +6,14 @@
 
 class ActiveUser(object):
     def __init__(self, _id, _socket):
-        self.__id = _id
+        self.__login_id = _id
         self.__socket = _socket
 
     def get_parameters(self):
-        return self.__id, self.__socket
+        return self.__login_id, self.__socket
 
     def get_socket(self):
         return self.__socket
 
     def get_id(self):
-        return self.__id
+        return self.__login_id

@@ -3,7 +3,7 @@
 # create data : 2018/04/07
 # author : Zhiquan.Wang
 
-import Game
+from GameInfoPackage.Game import *
 import logging
 
 
@@ -18,4 +18,4 @@ class GameManager(object):
             else:
                 logging.WARNING('Class:GameManager:add_game - input paramster must be a Game')
         except Exception:
-            logging.ERROR('Class:GameManager:add_game')
+            logging.exception('Class:GameManager:add_game')

@@ -10,6 +10,8 @@ import DbManager
 import ActiveUser
 import Md5Manager
 import logging
+import random
+import time
 
 
 class UserManager(object):
@@ -18,7 +20,7 @@ class UserManager(object):
         if isinstance(_db_manager, DbManager.DbManager):
             self.__ref_db_manager = _db_manager
         else:
-            logging.WARNING('Class UserManager  > __init__() - param must be a DbManager object')
+            logging.warning('Class UserManager  > __init__() - param must be a DbManager object')
 
     def register_user(self, _user_name, _pwd):
         try:
@@ -29,7 +31,7 @@ class UserManager(object):
             self.__ref_db_manager.insert_user_info(_user_name, pwd_md5)
             return True
         except Exception:
-            logging.ERROR('Class:UserManager:register_user')
+            logging.exception('Class:UserManager:register_user')
             return False
 
     def login(self, _user_name, _pwd, _socket):
@@ -45,11 +47,12 @@ class UserManager(object):
                     if tmp_act.get_id() == tmp_id:
                         self._active_list.remove(tmp_act)
                         break
-                tmp_active_user = ActiveUser.ActiveUser(str(tmp_id), _socket)
+                login_id_md5 = Md5Manager.create_md5((_user_name,random.uniform(0,tmp_id), time.time()))
+                tmp_active_user = ActiveUser.ActiveUser(login_id_md5, _socket)
                 self._active_list.append(tmp_active_user)
-                return tmp_id
+                return login_id_md5
         except Exception:
-            logging.ERROR('Class:UserManager:login')
+            logging.exception('Class:UserManager:login')
 
     def logout(self, _id):
         try:
@@ -59,7 +62,7 @@ class UserManager(object):
                     return True
             return False
         except Exception:
-            logging.ERROR('Class:UserManager:logout')
+            logging.exception('Class:UserManager:logout')
 
     def get_active_list(self):
         return self._active_list
