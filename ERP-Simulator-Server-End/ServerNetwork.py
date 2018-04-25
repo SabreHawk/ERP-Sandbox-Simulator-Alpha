@@ -39,9 +39,9 @@ class ServerSocket(object):
                 data = client_socket.recv(2048)
                 if not data:
                     break
-                client_msg = Message.Request(data.decode('utf-8'))
-                server_reply = self.__ref_ser_manager.address_request(client_msg, _c_socket_info)
-                client_socket.sendall(server_reply.get_message().encode('utf-8'))
+                msg_info = data.decode('utf-8')
+                server_reply = self.__ref_ser_manager.address_request(msg_info, _c_socket_info)
+                client_socket.sendall(server_reply.to_json().encode('utf-8'))
             client_socket.close()
         except Exception:
             logging.exception('Class:ServerNetwork:address_request')

@@ -23,6 +23,9 @@ class GameInfo(object):
         self._enroll_start_time = _params[4]
         self._enroll_end_time = _params[5]
 
+    def to_string(self):
+        pass
+
     def set_name(self, _name):
         self._name = _name
 

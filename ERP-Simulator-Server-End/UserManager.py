@@ -42,12 +42,12 @@ class UserManager(object):
             if tmp_id is None:
                 return None
             else:
-                # if relogin ,exit the former account
+                # if re-login ,exit the former account
                 for tmp_act in self._active_list:
                     if tmp_act.get_id() == tmp_id:
                         self._active_list.remove(tmp_act)
                         break
-                login_id_md5 = Md5Manager.create_md5((_user_name,random.uniform(0,tmp_id), time.time()))
+                login_id_md5 = Md5Manager.create_md5((_user_name, random.uniform(0, tmp_id), time.time()))
                 tmp_active_user = ActiveUser.ActiveUser(login_id_md5, _socket)
                 self._active_list.append(tmp_active_user)
                 return login_id_md5
