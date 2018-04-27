@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 namespace FontEnd {
     class Program {
         static void Main(string[] args) {
+            /*
             NetworkCommunication myNC = new NetworkCommunication("127.0.0.1", 8828);
             RequestManager rManager = new RequestManager(ref myNC);
             //Test RegisterReq & RegisterRep
@@ -47,6 +48,11 @@ namespace FontEnd {
             Console.WriteLine(tmp_o_p.JsonSerialization());
             Console.WriteLine(tmp_o_p.IsSuccessful);
             Console.WriteLine(tmp_o_p.ExtraInfo);
+            Console.ReadKey();
+            */
+
+            GameInfo tmpGameInfo = new GameInfo("newGame", new GameDate(2018, 4, 5, 19, 40), 4, true, "123", new GameDate(2018, 4, 3, 12, 40), new GameDate(2018, 4, 3, 12, 40));
+            Console.WriteLine(tmpGameInfo.JsonSerialization());
             Console.ReadKey();
         }
     }
