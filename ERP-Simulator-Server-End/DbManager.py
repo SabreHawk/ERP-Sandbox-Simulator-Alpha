@@ -72,7 +72,7 @@ class DbManager(object):
     def query_login(self, _user_name, _pwd_md5):  # if exist _username match _pwd_md5 return user_id
         tmp_sql = "select id from user_info where user_name = '%s' and pwd_md5 = '%s'" % (_user_name, _pwd_md5)
         tmp_res = self.__query(tmp_sql)
-        if not len(tmp_res):
+        if tmp_res is False or not len(tmp_res):
             return None
         else:
             return tmp_res[0][0]
