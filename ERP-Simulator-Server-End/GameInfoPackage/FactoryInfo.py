@@ -4,73 +4,111 @@
 # author : Simin.Zhan
 
 
+from Message import *
+
+
 class FactoryInfo(object):
 
-    def __init__(self, _name):
-        self.__name = _name
-        self.__capacity = None
-        self.__area = None
-        self.__purchase_cost = None
-        self.__rent_cost = None
-        self.__rent_to_purchase_cost = None
-        self.__construction_time = None
-        self.__ownership = None
-        self.__depreciation_rate = None
-        self.__salvage_value = None
+    def __init__(self, *, name, capacity=None, area=None, purchase_cost=None,
+                 rent_cost=None, rent_to_purchase_cost=None, construction_time=None,
+                 ownership=None, depreciation_rate=None, salvage_value=None):
+        self._name = name
+        self._capacity = capacity
+        self._area = area
+        self._purchase_cost = purchase_cost
+        self._rent_cost = rent_cost
+        self._rent_to_purchase_cost = rent_to_purchase_cost
+        self._construction_time = construction_time
+        self._ownership = ownership
+        self._depreciation_rate = depreciation_rate
+        self._salvage_value = salvage_value
 
-    def set_name(self, _name):
-        self.__name = _name
+    @property
+    def name(self):
+        return self._name
 
-    def get_name(self):
-        return self.__name
+    @name.setter
+    def name(self, _name):
+        self._name = _name
 
-    def set_purchase_cost(self, purchase_cost):
-        self.__purchase_cost = purchase_cost
+    @property
+    def purchase_cost(self):
+        return self._purchase_cost
 
-    def get_purchase_cost(self):
-        return self.__purchase_cost
+    @name.setter
+    def purchase_cost(self, _purchase_cost):
+        self._purchase_cost = _purchase_cost
 
-    def set_capacity(self, _capacity):
-        self.__capacity = _capacity
+    @property
+    def capacity(self):
+        return self._capacity
 
-    def set_rent_cost(self, _rent_cost):
-            self.__rent_cost = _rent_cost
+    @capacity.setter
+    def capacity(self, _capacity):
+        self._capacity = _capacity
 
-    def get_rent_cost(self):
-            return self.__rent_cost
+    @property
+    def rent_cost(self):
+            return self._rent_cost
 
-    def set_ownership(self, _ownership):
-        self.__ownership = _ownership
+    @rent_cost.setter
+    def rent_cost(self, _rent_cost):
+            self._rent_cost = _rent_cost
 
-    def get_ownership(self):
-        return self.__ownership
+    @property
+    def ownership(self):
+        return self._ownership
 
-    def set_area(self, _area):
-        self.__area = _area
+    @ownership.setter
+    def ownership(self, _ownership):
+        self._ownership = _ownership
 
-    def get_area(self):
-        return self.__area
+    @property
+    def area(self):
+        return self._area
 
-    def set_construction_time(self, _construction_time):
-        self.__construction_time = _construction_time
+    @area.setter
+    def area(self, _area):
+        self._area = _area
 
-    def get_construction_time(self):
-        return self.__construction_time
+    @property
+    def construction_time(self):
+        return self._construction_time
 
+    @construction_time.setter
+    def construction_time(self, _construction_time):
+        self._construction_time = _construction_time
+
+    @property
+    def depreciation_rate(self):
+        return self._depreciation_rate
+
+    @depreciation_rate.setter
     def set_depreciation_rate(self, _depreciation_rate):
-        self.__depreciation_rate = _depreciation_rate
+        self._depreciation_rate = _depreciation_rate
 
-    def get_depreciation_rate(self):
-        return self.__depreciation_rate
+    @property
+    def rent_to_purchase_cost(self):
+        return self._rent_to_purchase
 
-    def set_rent_to_purchase_cost(self, _rent_to_purchase_cost):
-        self.__rent_to_purchase_cost = _rent_to_purchase_cost
+    @rent_to_purchase_cost.setter
+    def rent_to_purchase_cost(self, _rent_to_purchase_cost):
+        self._rent_to_purchase_cost = _rent_to_purchase_cost
 
-    def get_rent_to_purchase_cost(self):
-        return self.__rent_to_purchase
+    @property
+    def salvage_value(self):
+        return self._salvage_value
 
-    def set_salvage_value(self, _salvage_value):
-        self.__salvage_value = _salvage_value
+    @salvage_value.setter
+    def salvage_value(self, _salvage_value):
+        self._salvage_value = _salvage_value
 
-    def get_salvage_value(self):
-        return self.__salvage_value
+    def __dict__(self):
+        return {JsonAttribute.name: self._name, JsonAttribute.purchase_cost: self._purchase_cost,
+                JsonAttribute.capacity: self._capacity, JsonAttribute.rent_cost: self._rent_cost,
+                JsonAttribute.ownership: self._ownership, JsonAttribute.construction_time: self._construction_time,
+                JsonAttribute.area: self._area, JsonAttribute.depreciation_rate: self._depreciation_rate,
+                JsonAttribute.rent_to_purchase_cost: self._rent_to_purchase_cost}
+
+    def to_json(self):
+        return json.dumps(self.__dict__())

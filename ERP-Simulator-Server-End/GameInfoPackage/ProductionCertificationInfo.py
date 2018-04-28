@@ -6,25 +6,31 @@
 
 class ProductionCertificationInfo(object):
 
-    def __init__(self, _name):
-        self.__name = _name
-        self.__cert_time = None
-        self.__cert_cost = None
+    def __init__(self, *, name, cert_time=None, cert_cost=None):
+        self._name = name
+        self._cert_time = cert_time
+        self._cert_cost = cert_cost
 
-    def set_name(self, _name):
-        self.__name = _name
+    @property
+    def name(self):
+        return self._name
 
-    def get_name(self):
-        return self.__name
+    @name.setter
+    def name(self, _name):
+        self._name = _name
 
-    def set_cert_time(self, _cert_time):
-        self.__cert_time = _cert_time
+    @property
+    def cert_time(self):
+        return self._cert_time
 
-    def get_cert_time(self):
-        return self.__cert_time
+    @cert_time.setter
+    def cert_time(self, _cert_time):
+        self._cert_time = _cert_time
 
-    def set_cert_cost(self, _cert_cost):
-        self.__cert_cost = _cert_cost
+    @property
+    def cert_cost(self):
+        return self._cert_cost
 
-    def get_cert_cost(self):
-        return self.__cert_cost
+    @cert_cost.setter
+    def cert_cost(self, _cert_cost):
+        self._cert_cost = _cert_cost

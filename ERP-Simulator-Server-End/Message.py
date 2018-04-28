@@ -106,11 +106,34 @@ class MessageList(object):
 
 class JsonAttribute(object):
     msg_type = 'Type'
-    msg_suc = "IsSuccessful"
+    msg_suc = 'IsSuccessful'
     extra_info = 'ExtraInfo'
     login_id = 'LoginID'
     user_name = 'UserName'
-    user_pwd = "UserPwd"
+    user_pwd = 'UserPwd'
+    initial_cash = 'InitialCash'
+    management_fee = 'ManagementFee'
+    name = 'Name'
+    purchase_cost = 'PurchaseCost'
+    capacity = 'Capacity'
+    rent_cost = 'RentCost'
+    ownership = 'Ownership'
+    area = 'Area'
+    construction_time = 'ConstructionTime'
+    depreciation_rate = 'DepreciationRate'
+    rent_to_purchase_cost = 'Rent2purchaseCost'
+    develop_time = 'DevelopTime'
+    develop_cost = 'DevelopCost'
+    construction_cost = 'ConstructionCost'       #
+    maintain_cost = 'MaintainCost'
+    productivity = 'Productivity'
+    transfer_time = 'TransferTime'
+    transfer_cost = 'TransferCost'
+    is_transfer = 'IsTransfer'
+    price = 'Price'
+    transport_time = 'TransportTime'
+    emg_purchase_times = 'EmgPurchaseTimes'
+    discount_rate = 'DiscountRate'    #
 
 
 class RequestInfo(object):

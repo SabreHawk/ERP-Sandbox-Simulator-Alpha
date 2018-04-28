@@ -4,41 +4,65 @@
 # author : Simin.Zhan
 
 
+from Message import *
+
+
 class RawMaterialInfo(object):
 
-    def __init__(self, _name):
-        self._name = _name
-        self._price = None
-        self._pre_time = None
-        self._emg_purchase_times = None
-        self._discount_rate = None
+    def __init__(self, *, name, price=None, transport_time=None, emg_purchase_times=None,
+                 discount_rate=None):
+        self._name = name
+        self._price = price
+        self._transport_time = transport_time
+        self._emg_purchase_times = emg_purchase_times
+        self._discount_rate = discount_rate
 
-    def set_name(self, _name):
-        self._name = _name
-
-    def get_name(self):
+    @property
+    def name(self):
         return self._name
 
-    def set_price(self, _price):
-        self._price = _price
+    @name.setter
+    def name(self, _name):
+        self._name = _name
 
-    def get_price(self):
+    @property
+    def price(self):
         return self._price
 
-    def set_pre_time(self, _pre_time):
-        self._pre_time = _pre_time
+    @price.setter
+    def price(self, _price):
+        self._price = _price
 
-    def get_pre_time(self):
-        return self._pre_time
+    @property
+    def pre_time(self):
+        return self._transport_time
 
-    def set_emg_purchase_times(self, _emg_purchase_times):
-        self._emg_purchase_times = _emg_purchase_times
+    @pre_time.setter
+    def pre_time(self, _transport_time):
+        self._transport_time = _transport_time
 
-    def get_emg_purchase_times(self):
+    @property
+    def emg_purchase_times(self):
         return self._emg_purchase_times
 
-    def set_discount_rate(self, _discount_rate):
+    @emg_purchase_times.setter
+    def emg_purchase_times(self, _emg_purchase_times):
+        self._emg_purchase_times = _emg_purchase_times
+
+    @property
+    def discount_rate(self):
+        return self._discount_rate
+
+    @discount_rate.setter
+    def discount_rate(self, _discount_rate):
         self._discount_rate = _discount_rate
 
-    def get_discount_rate(self):
-        return self._discount_rate
+    def __dict__(self):
+        return {JsonAttribute.name: self._name,
+                JsonAttribute.price: self._price,
+                JsonAttribute.transport_time: self._transport_time,
+                JsonAttribute.emg_purchase_times: self._emg_purchase_times,
+                JsonAttribute.discount_rate: self._discount_rate}
+
+    def to_json(self):
+        return json.dumps(self.__dict__())
