@@ -6,32 +6,40 @@
 
 class ISOInfo(object):
 
-    def __init__(self, _name):
-        self._name = _name
-        self._pay_back_time = None
-        self._loan_ratio = None
-        self._loan_times = None
+    def __init__(self, *, name, pay_back_time=None, loan_ratio=None, loan_times=None):
+        self._name = name
+        self._pay_back_time = pay_back_time
+        self._loan_ratio = loan_ratio
+        self._loan_times = loan_times
 
-    def set_name(self, _name):
-        self._name = _name
-
-    def get_name(self):
+    @property
+    def name(self):
         return self._name
 
-    def set_pay_back_time(self, _pay_back_time):
-        self._pay_back_time = _pay_back_time
+    @name.setter
+    def name(self, _name):
+        self._name = _name
 
-    def get_pay_back_time(self):
+    @property
+    def pay_back_time(self):
         return self._develop_time
 
-    def set_loan_ratio(self, _loan_ratio):
-        self._loan_ratio = _loan_ratio
+    @pay_back_time.setter
+    def pay_back_time(self, _pay_back_time):
+        self._pay_back_time = _pay_back_time
 
-    def get_loan_ratio(self):
+    @property
+    def loan_ratio(self):
         return self._loan_ratio
 
-    def set_loan_times(self, _loan_times):
-        self._loan_times = _loan_times
+    @loan_ratio.setter
+    def loan_ratio(self, _loan_ratio):
+        self._loan_ratio = _loan_ratio
 
-    def get_loan_times(self):
+    @property
+    def loan_times(self):
         return self._loan_times
+
+    @loan_times.setter
+    def loan_times(self, _loan_times):
+        self._loan_times = _loan_times

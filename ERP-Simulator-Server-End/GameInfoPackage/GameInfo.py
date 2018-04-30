@@ -6,14 +6,15 @@
 
 class GameInfo(object):
 
-    def __init__(self, _name):
-        self._name = _name
-        self._start_time = None
-        self._max_player = None
-        self._is_pwd = None
-        self._enroll_pwd = None
-        self._enroll_start_time = None
-        self._enroll_end_time = None
+    def __init__(self, *, name, start_time=None, max_player=None, is_pwd=None,
+                 enroll_pwd=None, enroll_start_time=None, enroll_end_time=None):
+        self._name = name
+        self._start_time = start_time
+        self._max_player = max_player
+        self._is_pwd = is_pwd
+        self._enroll_pwd = enroll_pwd
+        self._enroll_start_time = enroll_start_time
+        self._enroll_end_time = enroll_end_time
 
     def set_params(self, _params):
         self._start_time = _params[0]
@@ -26,45 +27,59 @@ class GameInfo(object):
     def to_string(self):
         pass
 
-    def set_name(self, _name):
-        self._name = _name
-
-    def get_name(self):
+    @property
+    def name(self):
         return self._name
 
-    def set_start_time(self, _start_time):
-        self._start_time = _start_time
+    @name.setter
+    def name(self, _name):
+        self._name = _name
 
-    def get_start_time(self):
+    @property
+    def start_time(self):
         return self._start_time
 
-    def set_max_player(self, _max_player):
-        self._max_player = _max_player
+    @start_time.setter
+    def start_time(self, _start_time):
+        self._start_time = _start_time
 
-    def get_max_player(self):
+    @property
+    def max_player(self):
         return self._max_player
 
-    def set_is_pwd(self, _is_pwd):
-        self._is_pwd = _is_pwd
+    @max_player.setter
+    def max_player(self, _max_player):
+        self._max_player = _max_player
 
-    def get_is_pwd(self):
+    @property
+    def is_pwd(self):
         return self._is_pwd
 
-    def set_enroll_pwd(self, _enroll_pwd):
+    @is_pwd.setter
+    def is_pwd(self, _is_pwd):
+        self._is_pwd = _is_pwd
+
+    @property
+    def enroll_pwd(self):
+        return self._enroll_pwd
+
+    @enroll_pwd.setter
+    def enroll_pwd(self, _enroll_pwd):
         if self._is_pwd:
             self._enroll_pwd = _enroll_pwd
 
-    def get_enroll_pwd(self):
-        return self._enroll_pwd
-
-    def set_enroll_start_time(self, _enroll_start_time):
-        self._enroll_start_time = _enroll_start_time
-
-    def get_enroll_start_time(self):
+    @property
+    def enroll_start_time(self):
         return self._enroll_start_time
 
-    def set_enroll_end_time(self, _enroll_end_time):
-        self._enroll_end_time = _enroll_end_time
+    @enroll_start_time.setter
+    def enroll_start_time(self, _enroll_start_time):
+        self._enroll_start_time = _enroll_start_time
 
-    def get_enroll_end_time(self):
+    @property
+    def enroll_end_time(self):
         return self._enroll_end_time
+
+    @enroll_end_time.setter
+    def enroll_end_time(self, _enroll_end_time):
+        self._enroll_end_time = _enroll_end_time

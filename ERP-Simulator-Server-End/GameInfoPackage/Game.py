@@ -6,7 +6,7 @@
 import GameInfoPackage.GameRule
 
 class Game(object):
-    def __init__(self,_g_id):
+    def __init__(self, _g_id):
         self.__game_id = _g_id
         self.__game_info = None
         self.__game_rule = None

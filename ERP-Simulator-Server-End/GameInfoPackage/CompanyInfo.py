@@ -4,20 +4,33 @@
 # author : Simin.Zhan
 
 
+from Message import *
+
+
 class CompanyInfo(object):
 
-    def __init__(self):
-        self._initial_cash = None
-        self._management_fee = None
+    def __init__(self, *, initial_cash=None, management_fee=None):
+        self._initial_cash = initial_cash
+        self._management_fee = management_fee
 
-    def set_initial_cash(self, _initial_cash):
-        self._initial_cash = _initial_cash
-
-    def get_initial_cash(self):
+    @property
+    def initial_cash(self):
         return self._initial_cash
 
-    def set_management_fee(self, _management_fee):
+    @initial_cash.setter
+    def initial_cash(self, _initial_cash):
+        self._initial_cash = _initial_cash
+
+    @property
+    def management_fee(self):
+        return self._management_fee
+
+    @management_fee.setter
+    def management_fee(self, _management_fee):
         self._management_fee = _management_fee
 
-    def get_management_fee(self):
-        return self._management_fee
+    def __dict__(self):
+        return {JsonAttribute.initial_cash: self._initial_cash, JsonAttribute.management_fee: self._management_fee}
+
+    def to_json(self):
+        return json.dumps(self.__dict__())
