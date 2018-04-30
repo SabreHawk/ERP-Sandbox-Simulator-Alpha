@@ -263,7 +263,6 @@ namespace FontEnd {
         }
     }
 
-
     class GameDate {
         int[] DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
         int year;
@@ -341,6 +340,7 @@ namespace FontEnd {
             return Year.ToString() + "-" + Month.ToString() + "-" + Day.ToString() + "-" + Hour + ":" + Minute;     
         }
     }
+
     class GameInfo {
         String gameName;
         GameDate startDate;
@@ -378,9 +378,52 @@ namespace FontEnd {
         public string EnrollPwd { get => enrollPwd; set => enrollPwd = value; }
         public GameDate EnrollStartTime { get => enrollStartTime; set => enrollStartTime = value; }
         public GameDate EnrollEndTime { get => enrollEndTime; set => enrollEndTime = value; }
-
         public String JsonSerialization() {
             return JsonConvert.SerializeObject(this);
         }
+    }
+
+    class GameRule {
+        ArrayList factoryList;
+        ArrayList productionLineList;
+        ArrayList rawMaterialList;
+        ArrayList productList;
+        ArrayList productionCertificationList;
+        ArrayList companyList;
+
+        public GameRule(ArrayList _fL, ArrayList _plL, ArrayList _rmL, ArrayList _pL, ArrayList _pcL, ArrayList _cL) {
+            FactoryList = _fL;
+            ProductionLineList = _plL;
+            RawMaterialList = _rmL;
+            ProductList = _pL;
+            ProductionCertificationList = _pcL;
+            CompanyList = _cL;
+        }
+
+        public ArrayList FactoryList { get => factoryList; set => factoryList = value; }
+        public ArrayList ProductionLineList { get => productionLineList; set => productionLineList = value; }
+        public ArrayList RawMaterialList { get => rawMaterialList; set => rawMaterialList = value; }
+        public ArrayList ProductList { get => productList; set => productList = value; }
+        public ArrayList ProductionCertificationList { get => productionCertificationList; set => productionCertificationList = value; }
+        public ArrayList CompanyList { get => companyList; set => companyList = value; }
+    }
+    class Game {
+        String organizerName;
+        String gameID;
+        GameInfo gameInfo;
+        GameRule gameRule;
+        ArrayList enrollTeamList;
+        ArrayList subManagerList;
+
+        public Game(String _oN) {
+            OrganizerName = _oN;
+        }
+
+        public string OrganizerName { get => organizerName; set => organizerName = value; }
+        public string GameID { get => gameID; set => gameID = value; }
+        public ArrayList EnrollTeamList { get => enrollTeamList; set => enrollTeamList = value; }
+        public ArrayList SubManagerList { get => subManagerList; set => subManagerList = value; }
+        internal GameInfo GameInfo { get => gameInfo; set => gameInfo = value; }
+        internal GameRule GameRule { get => gameRule; set => gameRule = value; }
     }
 }

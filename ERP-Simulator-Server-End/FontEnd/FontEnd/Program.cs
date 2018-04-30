@@ -49,10 +49,16 @@ namespace FontEnd {
             Console.WriteLine(tmp_o_p.IsSuccessful);
             Console.WriteLine(tmp_o_p.ExtraInfo);
             Console.ReadKey();
-            */
-
+     
+            // Test Game Info
             GameInfo tmpGameInfo = new GameInfo("newGame", new GameDate(2018, 4, 5, 19, 40), 4, true, "123", new GameDate(2018, 4, 3, 12, 40), new GameDate(2018, 4, 3, 12, 40));
             Console.WriteLine(tmpGameInfo.JsonSerialization());
+            Console.ReadKey();
+            */
+            Team tmpTeam = new Team("123", "name");
+            tmpTeam.AddTeamMember("455");
+            tmpTeam.AddTeamMember("member 2");
+            Console.WriteLine(tmpTeam.JsonSerialization());
             Console.ReadKey();
         }
     }

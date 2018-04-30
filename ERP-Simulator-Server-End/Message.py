@@ -93,6 +93,17 @@ import json
 #         else:
 #             logging.WARNING("Error : Class Reply Error > __init__")
 
+class JsonAttribute(object):
+    msg_type = 'Type'
+    msg_suc = "IsSuccessful"
+    extra_info = 'ExtraInfo'
+    login_id = 'LoginID'
+    user_name = 'UserName'
+    user_pwd = "UserPwd"
+    team_name = "TeamName"
+    leader_name = "LeaderName"
+    member_list = "MemberList"
+
 def get_request_type(*, json_info):
     return json.loads(json_info)[JsonAttribute.msg_type]
 
@@ -104,13 +115,6 @@ class MessageList(object):
     logout = message_list[2]
 
 
-class JsonAttribute(object):
-    msg_type = 'Type'
-    msg_suc = "IsSuccessful"
-    extra_info = 'ExtraInfo'
-    login_id = 'LoginID'
-    user_name = 'UserName'
-    user_pwd = "UserPwd"
 
 
 class RequestInfo(object):
