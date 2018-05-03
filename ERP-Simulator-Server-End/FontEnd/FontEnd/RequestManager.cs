@@ -42,5 +42,13 @@ namespace FontEnd {
                 return new RegisterRep(false, "Exception");
             }
         }
+
+        public CreateGameRep RequestCreateGame(CreateGameReq _i) {
+            try {
+                return new CreateGameRep(refNetworkCommunication.RequestService(_i.JsonSerialization()));
+            }catch (Exception e) {
+                return new CreateGameRep(false, "Exception");
+            }
+        }
     }
 }

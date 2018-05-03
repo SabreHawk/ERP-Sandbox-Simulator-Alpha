@@ -407,6 +407,7 @@ namespace FontEnd {
         public ArrayList ProductionCertificationList { get => productionCertificationList; set => productionCertificationList = value; }
         public ArrayList CompanyList { get => companyList; set => companyList = value; }
     }
+
     class Game {
         String organizerName;
         String gameID;
@@ -423,7 +424,7 @@ namespace FontEnd {
         public string GameID { get => gameID; set => gameID = value; }
         public ArrayList EnrollTeamList { get => enrollTeamList; set => enrollTeamList = value; }
         public ArrayList SubManagerList { get => subManagerList; set => subManagerList = value; }
-        internal GameInfo GameInfo { get => gameInfo; set => gameInfo = value; }
-        internal GameRule GameRule { get => gameRule; set => gameRule = value; }
+        public GameInfo GameInfo { get => gameInfo; set => gameInfo = value; }
+        public GameRule GameRule { get => gameRule; set => gameRule = value; }
     }
 }

@@ -25,6 +25,24 @@ namespace FontEnd {
             return JsonConvert.SerializeObject(this);
         }
     }
+
+    abstract class ReplyInfo {
+        private Boolean isSuccessful;
+        private String extraInfo;
+        public ReplyInfo() {
+        }
+        public ReplyInfo(Boolean _b, String _e) {
+            isSuccessful = _b;
+            extraInfo = _e;
+        }
+        public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
+        public String ExtraInfo { get => extraInfo; set => extraInfo = value; }
+        public String JsonSerialization() {
+            return JsonConvert.SerializeObject(this);
+        }
+    }
+
+
     class LoginReq : RequestInfo {
         private String userName;
         private String userPwd;
@@ -45,6 +63,25 @@ namespace FontEnd {
         public string UserPwd { get => userPwd; set => userPwd = value; }
 
     }
+
+    class LoginRep : ReplyInfo {
+        private String loginID;
+        public LoginRep() : base() {
+
+        }
+        public LoginRep(Boolean _b, String _e = "") : base(_b, _e) {
+            LoginID = "";
+        }
+        public LoginRep(String _jsonS) {
+            LoginRep tmp_l = JsonConvert.DeserializeObject<LoginRep>(_jsonS);
+            IsSuccessful = tmp_l.IsSuccessful;
+            LoginID = tmp_l.LoginID;
+            ExtraInfo = tmp_l.ExtraInfo;
+        }
+        public String LoginID { get => loginID; set => loginID = value; }
+    }
+
+
     class LogoutReq : RequestInfo {
         String loginID;
         public LogoutReq() {
@@ -54,6 +91,20 @@ namespace FontEnd {
             loginID = _id;
         }
         public string LoginID { get => loginID; set => loginID = value; }
+    }
+
+    class LogoutRep : ReplyInfo {
+        public LogoutRep() : base() {
+
+        }
+        public LogoutRep(Boolean _b, String _e) : base(_b, _e) {
+
+        }
+        public LogoutRep(String _jsonS) {
+            LogoutRep tmp_l = JsonConvert.DeserializeObject<LogoutRep>(_jsonS);
+            IsSuccessful = tmp_l.IsSuccessful;
+            ExtraInfo = tmp_l.ExtraInfo;
+        }
     }
     class RegisterReq : RequestInfo {
         String userName;
@@ -70,55 +121,11 @@ namespace FontEnd {
         public string UserPwd { get => userPwd; set => userPwd = value; }
     }
 
-    abstract class ReplyInfo {
-        private Boolean isSuccessful;
-        private String extraInfo;
-        public ReplyInfo() {
-        }
-        public ReplyInfo(Boolean _b,String _e) {
-            isSuccessful = _b;
-            extraInfo = _e;
-        }
-        public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
-        public String ExtraInfo { get => extraInfo; set => extraInfo = value; }
-        public String JsonSerialization() {
-            return JsonConvert.SerializeObject(this);
-        }
-    }
-    class LoginRep: ReplyInfo {
-        private String loginID;
-        public LoginRep():base() {
-
-        }
-        public LoginRep(Boolean _b, String _e="") : base(_b, _e) {
-            LoginID = "";
-        }
-        public LoginRep(String _jsonS) {
-            LoginRep tmp_l = JsonConvert.DeserializeObject<LoginRep>(_jsonS);
-            IsSuccessful = tmp_l.IsSuccessful;
-            LoginID = tmp_l.LoginID;
-            ExtraInfo = tmp_l.ExtraInfo;
-        }
-        public String LoginID { get => loginID; set => loginID = value; }
-    }
-    class LogoutRep : ReplyInfo {
-        public LogoutRep() : base() {
-
-        }
-        public LogoutRep(Boolean _b, String _e) : base(_b, _e) {
-
-        }
-        public LogoutRep(String _jsonS) {
-            LogoutRep tmp_l = JsonConvert.DeserializeObject<LogoutRep>(_jsonS);
-            IsSuccessful = tmp_l.IsSuccessful;
-            ExtraInfo = tmp_l.ExtraInfo;
-        }
-    }
     class RegisterRep : ReplyInfo {
         public RegisterRep() : base() {
 
         }
-        public RegisterRep(Boolean _b,String _e) : base(_b, _e) {
+        public RegisterRep(Boolean _b, String _e) : base(_b, _e) {
 
         }
         public RegisterRep(String _jsonS) {
@@ -127,4 +134,43 @@ namespace FontEnd {
             ExtraInfo = tmp_l.ExtraInfo;
         }
     }
+    class CreateGameReq : RequestInfo {
+        String gameName;
+        GameInfo gameInfo;
+        GameRule gameRule;
+        public CreateGameReq() : base() {
+
+        }
+        public CreateGameReq(String _game_name, GameInfo _gInfo, GameRule _gRule) {
+            GameName = _game_name;
+            GameInfo = _gInfo;
+            GameRule = _gRule;
+        }
+
+        public GameInfo GameInfo { get => gameInfo; set => gameInfo = value; }
+        public GameRule GameRule { get => gameRule; set => gameRule = value; }
+        public string GameName { get => gameName; set => gameName = value; }
+    }
+
+    class CreateGameRep : ReplyInfo {
+        String gameID;
+
+        public CreateGameRep() : base() {
+
+        }
+        public CreateGameRep(bool _b, String _e) : base(_b, _e) {
+
+        }
+        public CreateGameRep(String _jsonS) {
+            CreateGameRep tmp_p = JsonConvert.DeserializeObject<CreateGameRep>(_jsonS);
+            IsSuccessful = tmp_p.IsSuccessful;
+            GameID = tmp_p.GameID;
+            ExtraInfo = tmp_p.ExtraInfo;
+        }
+        public string GameID { get => gameID; set => gameID = value; }
+    }
+    
+   
+   
+ 
 }

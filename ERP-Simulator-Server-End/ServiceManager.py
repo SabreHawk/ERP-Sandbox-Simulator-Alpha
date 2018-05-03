@@ -72,9 +72,5 @@ class ServiceManager(object):
             logging.exception('Class:ServiceManager:address_register')
             return Message.RegisterRep(msg_suc=False, extra_info='Exception - Class:ServiceManager:address_register')
 
-    # def __create_game(self, _c_msg):
-    #     try:
-    #         tmp_game_info = GameInfo.GameInfo()
-    #         tmp_game_info.set_params()
-    #     except Exception:
-    #         logging.exception('Class:ServiceManager:create_game')
+    def __address_create_game(self,_c_game):
+        pass
